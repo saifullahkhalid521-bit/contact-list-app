@@ -19,3 +19,72 @@ button {
   margin-top: 10px;
   border-radius: 5px;
 }
+
+/* Name Input */
+#nameInput {
+  width: 250px;
+  padding: 10px 12px;
+  margin: 8px 5px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+#nameInput:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.4);
+}
+
+/* Email Input */
+#emailInput {
+  width: 250px;
+  padding: 10px 12px;
+  margin: 8px 5px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+#emailInput:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.4);
+}
+
+/* City Input */
+#cityInput {
+  width: 250px;
+  padding: 10px 12px;
+  margin: 8px 5px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+#cityInput:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.4);
+}
+
+/* Add Contact Button */
+#addContactBtn {
+  padding: 10px 14px;
+  margin: 8px 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #28a745;
+  color: white;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+#addContactBtn:hover {
+  background-color: #1f8a38;
+  transform: translateY(-1px);
+}
