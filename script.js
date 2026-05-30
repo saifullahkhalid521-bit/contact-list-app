@@ -38,7 +38,7 @@ const displayContacts = (data) => {
 
   contactList.innerHTML = "";
 
-  data.map((contact) => {
+  data.forEach((contact) => {
 
     contactList.innerHTML += `
     <div class= "contact">
@@ -82,4 +82,25 @@ showRanchiBtn.addEventListener("click" , () => {
     return contact.city === "Ranchi";
   });
   displayContacts(ranchicontacts);
-})
+});
+
+const nameInput = document.getElementById("nameInput");
+const emailInput = document.getElementById("emailInput");
+const cityInput = document.getElementById("cityInput");
+const addContactBtn = document.getElementById("addContactBtn");
+
+addContactBtn.addEventListener("click", () => {
+  const newContact = {
+    name: nameInput.value,
+    email: emailInput.value,
+    city: cityInput.value
+  };
+
+  contacts.push(newContact);
+
+  displayContacts(contacts);
+
+  nameInput.value = "";
+  emailInput.value = "";
+  cityInput.value = "";
+});
