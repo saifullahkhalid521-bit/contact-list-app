@@ -1,3 +1,5 @@
+let editContactId = null ;
+
 const defaultContacts = [
   {
     id:1,
@@ -51,12 +53,24 @@ const displayContacts = (data) => {
     <h3>${contact.name}</h3>
     <p>${contact.email}</p>
     <p>${contact.city}</p>
-    <button onclick = "deleteContact(${contact.id})">Delete</button>
+    <button class = "delete-btn" onclick = "deleteContact(${contact.id})">Delete</button>
+    <button class = "edit-btn" onclick = "editContact(${contact.id})">Edit</button>
     </div>
     `;
   });
 };
 
+function editContact(id) {
+  const contact = contacts.find(contact => contact.id === id);
+
+  nameInput.value = contact.name;
+  emailInput.value = contact.email;
+  cityInput.value = contact.city;
+
+  editContactId = id;
+
+  addContactBtn.textContent = "Update Contact";
+}
 
 function deleteContact(id) {
   contacts = contacts.filter((contact) => {
@@ -123,17 +137,35 @@ const cityInput = document.getElementById("cityInput");
 const addContactBtn = document.getElementById("addContactBtn");
 
 addContactBtn.addEventListener("click", () => {
-  const newContact = {
-    id: Date.now(),
-    name: nameInput.value,
-    email: emailInput.value,
-    city: cityInput.value
-  };
 
-  contacts.push(newContact);
+  if (editContactId !== null) {
+
+    const contact = contacts.find(
+      contact => contact.id === editContactId
+    );
+
+    contact.name = nameInput.value;
+    contact.email = emailInput.value;
+    contact.city = cityInput.value;
+
+    editContactId = null;
+    addContactBtn.textContent = "Add Contact";
+
+  } else {
+
+    const newContact = {
+      id: Date.now(),
+      name: nameInput.value,
+      email: emailInput.value,
+      city: cityInput.value
+    };
+
+    contacts.push(newContact);
+  }
 
   localStorage.setItem(
-    "contacts", JSON.stringify(contacts)
+    "contacts",
+    JSON.stringify(contacts)
   );
 
   displayContacts(contacts);
