@@ -1,4 +1,4 @@
-const contacts = [
+const defaultContacts = [
   {
     name:"Aman",
     email:"aman@gmail.com",
@@ -50,7 +50,20 @@ const displayContacts = (data) => {
   });
 };
 
+
+
+const savedContacts = localStorage.getItem("contacts");
+
+let contacts;
+
+if (savedContacts) {
+  contacts = JSON.parse(savedContacts);
+} else {
+  contacts = defaultContacts;
+}
+
 displayContacts(contacts);
+
 
 const showAllBtn = document.getElementById("showAll");
 const showDelhiBtn = document.getElementById("showDelhi");
@@ -98,9 +111,14 @@ addContactBtn.addEventListener("click", () => {
 
   contacts.push(newContact);
 
+  localStorage.setItem(
+    "contacts", JSON.stringify(contacts)
+  );
+
   displayContacts(contacts);
 
   nameInput.value = "";
   emailInput.value = "";
   cityInput.value = "";
 });
+
