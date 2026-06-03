@@ -1,31 +1,37 @@
 const defaultContacts = [
   {
+    id:1,
     name:"Aman",
     email:"aman@gmail.com",
     city:"Delhi"
 
   },
   {
+    id:2,
     name:"Rahul",
     email:"rahul@gmail.com",
     city:"Mumbai"
   },
   {
+    id:3,
     name:"Priya",
     email:"priya@gmail.com",
     city:"Delhi"
   },
   {
+    id:4,
     name:"Sanu",
     email:"sanu@gmail.com",
     city:"Mumbai"
   },
   {
+    id:5,
     name:"Raj",
     email:"raj@gmail.com",
     city:"Ranchi"
   },
   {
+    id:6,
     name:"Saif",
     email:"saif@gmail.com",
     city:"Ranchi"
@@ -45,11 +51,25 @@ const displayContacts = (data) => {
     <h3>${contact.name}</h3>
     <p>${contact.email}</p>
     <p>${contact.city}</p>
+    <button onclick = "deleteContact(${contact.id})">Delete</button>
     </div>
     `;
   });
 };
 
+
+function deleteContact(id) {
+  contacts = contacts.filter((contact) => {
+    return contact.id !== id;
+  });
+
+  localStorage.setItem(
+    "contacts",
+    JSON.stringify(contacts)
+  );
+
+  displayContacts(contacts);
+}
 
 
 const savedContacts = localStorage.getItem("contacts");
@@ -104,6 +124,7 @@ const addContactBtn = document.getElementById("addContactBtn");
 
 addContactBtn.addEventListener("click", () => {
   const newContact = {
+    id: Date.now(),
     name: nameInput.value,
     email: emailInput.value,
     city: cityInput.value
