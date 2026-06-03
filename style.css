@@ -1,130 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
+  background: #f4f7fb;
   padding: 20px;
+  min-height: 100vh;
 }
 
 h1 {
-  color: #333;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #222;
 }
 
-button {
-  margin: 10px 5px;
-  padding: 10px;
-  cursor: pointer;
-}
+/* Input Section */
 
-.contact {
-  background-color: #f2f2f2;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
-}
-
-/* Name Input */
-#nameInput {
-  width: 250px;
-  padding: 10px 12px;
-  margin: 8px 5px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  outline: none;
-  font-size: 14px;
-  transition: 0.2s ease;
-}
-
-#nameInput:focus {
-  border-color: #4a90e2;
-  box-shadow: 0 0 5px rgba(74, 144, 226, 0.4);
-}
-
-/* Email Input */
-#emailInput {
-  width: 250px;
-  padding: 10px 12px;
-  margin: 8px 5px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  outline: none;
-  font-size: 14px;
-  transition: 0.2s ease;
-}
-
-#emailInput:focus {
-  border-color: #4a90e2;
-  box-shadow: 0 0 5px rgba(74, 144, 226, 0.4);
-}
-
-/* City Input */
+#nameInput,
+#emailInput,
 #cityInput {
-  width: 250px;
-  padding: 10px 12px;
+  width: 100%;
+  max-width: 350px;
+  padding: 12px;
   margin: 8px 5px;
   border: 2px solid #ddd;
-  border-radius: 8px;
+  border-radius: 10px;
   outline: none;
-  font-size: 14px;
-  transition: 0.2s ease;
+  font-size: 15px;
+  transition: all 0.3s ease;
 }
 
+#nameInput:focus,
+#emailInput:focus,
 #cityInput:focus {
-  border-color: #4a90e2;
-  box-shadow: 0 0 5px rgba(74, 144, 226, 0.4);
+  border-color: #2196f3;
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.2);
 }
 
-/* Add Contact Button */
+/* Main Add Button */
+
 #addContactBtn {
-  padding: 10px 14px;
-  margin: 8px 5px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background-color: #28a745;
+  background: #28a745;
   color: white;
-  font-size: 14px;
-  transition: 0.2s ease;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
 }
 
 #addContactBtn:hover {
-  background-color: #1f8a38;
-  transform: translateY(-1px);
+  background: #218838;
+  transform: translateY(-2px);
 }
+
+/* Filter Buttons */
+
+#showAll,
+#showDelhi,
+#showMumbai,
+#showRanchi {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  margin: 5px;
+  cursor: pointer;
+  background: #2196f3;
+  color: white;
+  transition: 0.3s;
+}
+
+#showAll:hover,
+#showDelhi:hover,
+#showMumbai:hover,
+#showRanchi:hover {
+  background: #1976d2;
+}
+
+/* Contact List */
+
+#content_list {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Contact Card */
+
+.contact {
+  background: white;
+  padding: 18px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.contact:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.contact h3 {
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.contact p {
+  color: #666;
+  margin-bottom: 6px;
+}
+
+/* Buttons Container */
+
+.contact button {
+  margin-top: 10px;
+  margin-right: 8px;
+}
+
+/* Delete Button */
 
 .delete-btn {
-  background-color: #e53935;
+  background: #e53935;
   color: white;
   border: none;
   padding: 8px 14px;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  margin-top: 8px;
-  font-size: 14px;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
-#content_list .delete-btn:hover {
-  background-color: #c62828;
+.delete-btn:hover {
+  background: #c62828;
+  transform: scale(1.05);
 }
 
-#content_list .delete-btn:active {
-  transform: scale(0.97);
-}
+/* Edit Button */
 
-.edit-btn{
-  background-color: #2196f3;
+.edit-btn {
+  background: #2196f3;
   color: white;
   border: none;
   padding: 8px 14px;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  margin-top: 8px;
-  font-size: 14px;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
-#content_list .edit-btn:hover {
-  background-color: #1976d2;
+.edit-btn:hover {
+  background: #1976d2;
+  transform: scale(1.05);
 }
 
-#content_list .edit-btn:active {
-  transform: scale(0.97);
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  body {
+    padding: 15px;
+  }
+
+  #nameInput,
+  #emailInput,
+  #cityInput {
+    max-width: 100%;
+  }
+
+  #addContactBtn,
+  #showAll,
+  #showDelhi,
+  #showMumbai,
+  #showRanchi {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .contact {
+    padding: 15px;
+  }
 }
+
