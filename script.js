@@ -138,6 +138,17 @@ const addContactBtn = document.getElementById("addContactBtn");
 
 addContactBtn.addEventListener("click", () => {
 
+  if (
+    nameInput.value.trim() === "" ||
+    emailInput.value.trim() === "" ||
+    cityInput.value.trim() === ""
+  ) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  // Yahan se tumhara existing code start
+
   if (editContactId !== null) {
 
     const contact = contacts.find(
